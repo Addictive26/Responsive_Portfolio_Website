@@ -3,29 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Animated Loader</title>
+  <title>Loading Screen</title>
 
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- AOS (Animate On Scroll) -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
   <!-- Lottie -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 
   <style>
     body, html {
-      height: 100%;
       margin: 0;
+      padding: 0;
+      height: 100%;
       overflow: hidden;
-      background: #f8f9fa;
     }
 
     #loader-wrapper {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: #fff;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: #f8f9fa;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -34,75 +34,23 @@
     }
 
     .loader-box {
-      padding: 30px;
       background: white;
       border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       text-align: center;
-    }
-
-    .loader-text {
-      font-size: 1.2rem;
-      margin-top: 15px;
-      color: #343a40;
     }
 
     #lottie-loader {
       width: 250px;
       height: 250px;
     }
-  </style><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Animated Loader</title>
-
-  <!-- Bootstrap 5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <!-- AOS (Animate On Scroll) -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-
-  <!-- Lottie -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-
-  <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-      background: #f8f9fa;
-    }
-
-    #loader-wrapper {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      flex-direction: column;
-    }
-
-    .loader-box {
-      padding: 30px;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-      text-align: center;
-    }
 
     .loader-text {
-      font-size: 1.2rem;
       margin-top: 15px;
-      color: #343a40;
-    }
-
-    #lottie-loader {
-      width: 250px;
-      height: 250px;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: #333;
     }
   </style>
 </head>
@@ -111,66 +59,39 @@
 <div id="loader-wrapper">
   <div class="loader-box" data-aos="zoom-in">
     <div id="lottie-loader"></div>
-    <div class="loader-text">Loading... Please wait</div>
+    <div class="loader-text">Loading, please wait...</div>
   </div>
 </div>
 
 <!-- AOS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init();
 </script>
 
-<!-- Lottie Loader Init -->
+<!-- Lottie Animation Setup -->
 <script>
   lottie.loadAnimation({
     container: document.getElementById('lottie-loader'),
     renderer: 'svg',
     loop: true,
     autoplay: true,
-    path: 'https://assets7.lottiefiles.com/packages/lf20_cg3zptnq.json' // person working on computer
+    path: 'lf20_tno6cg2w.json' // working on computer animation
   });
 
   // Optional: Hide loader after 3 seconds
   setTimeout(() => {
     document.getElementById('loader-wrapper').style.display = 'none';
+    document.body.style.overflow = 'auto'; // enable scroll
+    window.location.href = 'index.php'; // scroll to top
   }, 3000);
 </script>
 
-</body>
-</html>
-
-</head>
-<body>
-
-<div id="loader-wrapper">
-  <div class="loader-box" data-aos="zoom-in">
-    <div id="lottie-loader"></div>
-    <div class="loader-text">Loading... Please wait</div>
-  </div>
+<!-- Your page content goes here -->
+<div class="container py-5">
+  <h1 class="text-center">Welcome to Your Website</h1>
+  <p class="text-center">The content will show after the loader.</p>
 </div>
-
-<!-- AOS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-
-<!-- Lottie Loader Init -->
-<script>
-  lottie.loadAnimation({
-    container: document.getElementById('lottie-loader'),
-    renderer: 'svg',
-    loop: true,
-    autoplay: true,
-    path: 'https://assets7.lottiefiles.com/packages/lf20_cg3zptnq.json' // person working on computer
-  });
-
-  // Optional: Hide loader after 3 seconds
-  setTimeout(() => {
-    document.getElementById('loader-wrapper').style.display = 'none';
-  }, 3000);
-</script>
 
 </body>
 </html>
